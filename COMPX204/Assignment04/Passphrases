@@ -1,0 +1,4 @@
+ca-private.pem pass phrase: Acer0610
+ca-cert.jks password: Acer0610
+server.jks password: Acer0610
+Keystore password: Acer0610

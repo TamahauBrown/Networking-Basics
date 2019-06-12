@@ -1,0 +1,75 @@
+//Tamahau Brown's Assignment
+
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
+class HttpServer
+{
+
+public static void main(String args[]) throws Exception
+ {
+    //write something to the console here
+    System.out.println("Running the web server");
+    HttpServer server = new HttpServer();
+    ServerSocket socket = new ServerSocket(1234);
+    Socket sock = socket.accept();
+
+    InputStreamReader IR = new InputStreamReader(sock.getInputStream());
+    BufferedReader BR = new BufferedReader(IR);
+		
+    String MESSAGE = BR.readLine();
+    System.out.println(MESSAGE);
+		
+    if(MESSAGE != null)
+      {
+	   PrintStream PS = new PrintStream(sock.getOutputStream());
+           String address = args[0];
+            
+            try
+            {
+                InetAddress IP = InetAddress.getByName(address);
+                PS.println("Hello " + args[0]);
+                PS.println("Your IP address is " + IP.getHostAddress());
+            }
+            catch(UnknownHostException e)
+            {
+                System.err.println(address + " unknown host");
+            }
+      }
+ }
+}
+public static void main(String args[]) throws Exception
+ {
+    ArrayList<HttpServerSession> serverSession;
+      
+    //write something to the console here
+    System.out.println("Running the web server");
+    HttpServer server = new HttpServer();
+    ServerSocket socket = new ServerSocket(1234);
+
+    //InputStreamReader IR = new InputStreamReader(sock.getInputStream());
+    //BufferedReader BR = new BufferedReader(IR);
+		
+    //String MESSAGE = BR.readLine();
+    //System.out.println(MESSAGE);
+		
+    //PrintStream PS = new PrintStream(sock.getOutputStream());
+    //String address = ;
+            
+            try
+            {
+                while(true)
+		    {
+			Socket sock = socket.accept();
+			SocketAddress remote = sock.getRemoteSocketAddress();
+			//InetAddress IP = InetAddress.getByName(remote.to);
+			System.out.println("Connected to " + remote);
+		    }
+            }
+            catch(UnknownHostException e)
+            {
+                System.err.println("unknown host");
+            }
+      }
+ }
